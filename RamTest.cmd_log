@@ -1,0 +1,30 @@
+xst -intstyle ise -ifn "M:/FPGAWorkspace/FPGAANN/FPGAANN/RamTest.xst" -ofn "M:/FPGAWorkspace/FPGAANN/FPGAANN/RamTest.syr" 
+xst -intstyle ise -ifn "M:/FPGAWorkspace/FPGAANN/FPGAANN/RamTest.xst" -ofn "M:/FPGAWorkspace/FPGAANN/FPGAANN/RamTest.syr" 
+xst -intstyle ise -ifn "M:/FPGAWorkspace/FPGAANN/FPGAANN/RamTest.xst" -ofn "M:/FPGAWorkspace/FPGAANN/FPGAANN/RamTest.syr" 
+xst -intstyle ise -ifn "M:/FPGAWorkspace/FPGAANN/FPGAANN/RamTest.xst" -ofn "M:/FPGAWorkspace/FPGAANN/FPGAANN/RamTest.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc RamTest.ucf -p xc3s500e-fg320-4 RamTest.ngc RamTest.ngd  
+xst -intstyle ise -ifn "M:/FPGAWorkspace/FPGAANN/FPGAANN/RamTest.xst" -ofn "M:/FPGAWorkspace/FPGAANN/FPGAANN/RamTest.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc RamTest.ucf -p xc3s500e-fg320-4 RamTest.ngc RamTest.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o RamTest_map.ncd RamTest.ngd RamTest.pcf 
+par -w -intstyle ise -ol high -t 1 RamTest_map.ncd RamTest.ncd RamTest.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml RamTest.twx RamTest.ncd -o RamTest.twr RamTest.pcf -ucf RamTest.ucf 
+bitgen -intstyle ise -f RamTest.ut RamTest.ncd 
+xst -intstyle ise -ifn "M:/FPGAWorkspace/FPGAANN/FPGAANN/RamTest.xst" -ofn "M:/FPGAWorkspace/FPGAANN/FPGAANN/RamTest.syr" 
+xst -intstyle ise -ifn "M:/FPGAWorkspace/FPGAANN/FPGAANN/RamTest.xst" -ofn "M:/FPGAWorkspace/FPGAANN/FPGAANN/RamTest.syr" 
+xst -intstyle ise -ifn "M:/FPGAWorkspace/FPGAANN/FPGAANN/RamTest.xst" -ofn "M:/FPGAWorkspace/FPGAANN/FPGAANN/RamTest.syr" 
+xst -intstyle ise -ifn "M:/FPGAWorkspace/FPGAANN/FPGAANN/RamTest.xst" -ofn "M:/FPGAWorkspace/FPGAANN/FPGAANN/RamTest.syr" 
+xst -intstyle ise -ifn "M:/FPGAWorkspace/FPGAANN/FPGAANN/RamTest.xst" -ofn "M:/FPGAWorkspace/FPGAANN/FPGAANN/RamTest.syr" 
+xst -intstyle ise -ifn "M:/FPGAWorkspace/FPGAANN/FPGAANN/RamTest.xst" -ofn "M:/FPGAWorkspace/FPGAANN/FPGAANN/RamTest.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc RamTest.ucf -p xc3s500e-fg320-4 RamTest.ngc RamTest.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o RamTest_map.ncd RamTest.ngd RamTest.pcf 
+par -w -intstyle ise -ol high -t 1 RamTest_map.ncd RamTest.ncd RamTest.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml RamTest.twx RamTest.ncd -o RamTest.twr RamTest.pcf -ucf RamTest.ucf 
+bitgen -intstyle ise -f RamTest.ut RamTest.ncd 
+xst -intstyle ise -ifn "M:/FPGAWorkspace/FPGAANN/FPGAANN/RamTest.xst" -ofn "M:/FPGAWorkspace/FPGAANN/FPGAANN/RamTest.syr" 
+xst -intstyle ise -ifn "M:/FPGAWorkspace/FPGAANN/FPGAANN/RamTest.xst" -ofn "M:/FPGAWorkspace/FPGAANN/FPGAANN/RamTest.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc RamTest.ucf -p xc3s500e-fg320-4 RamTest.ngc RamTest.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o RamTest_map.ncd RamTest.ngd RamTest.pcf 
+par -w -intstyle ise -ol high -t 1 RamTest_map.ncd RamTest.ncd RamTest.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml RamTest.twx RamTest.ncd -o RamTest.twr RamTest.pcf -ucf RamTest.ucf 
+bitgen -intstyle ise -f RamTest.ut RamTest.ncd 
+bitgen -intstyle ise -f RamTest.ut RamTest.ncd 

@@ -1,14 +1,14 @@
 #clock
-//NET "clk"   LOC = "B8";
+NET "clk"   LOC = "B8";
 
 #network inputs
-#ET "nin<0>" LOC = "R17";
+//NET "nin" LOC = "R17";
 #NET "nin<1>" LOC = "N17";
 
 #network outputs
 #NET "nout<0>" LOC = "R4"; //previously C17
 
-NET "LED" LOC = "R4";
+//NET "LED" LOC = "R4";
 
 
 #LED's
