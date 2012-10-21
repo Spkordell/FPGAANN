@@ -43,7 +43,7 @@ output reg Ready;
 //make inout port available
 wire [15:0] MemDBIn;
 reg [15:0] MemDBOut=0;
-reg	MemDBOE=0;
+reg MemDBOE=0;
 assign MemDB = MemDBOE ? MemDBOut : 16'hzzzz;
 assign MemDBIn = MemDB;
 

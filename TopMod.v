@@ -72,6 +72,7 @@ Network NN(timeToRun,networkState,activeNetwork,networkFinished,nin,nout,clk,ram
 NetworkControl NC(clk,networkState,initializeFinished,sortFinished,crossFinished,networkFinished,generationCounter);
 DNAInitializer INIT(randomizeEnabled,networkState,initializeFinished,randomnum,clk,ramBusDataIn,ramBusAddr,ramLatch,ramReady,ramInstruction);
 BubbleSort BS(networkState,sortFinished,fitness,activeNetwork,clk,ramBusDataOut,ramBusDataIn,ramBusAddr,ramLatch,ramReady,ramInstruction);
+DNACrosser CROSS(networkState,crossFinished,randomnum,clk,ramBusDataOut,ramBusDataIn,ramBusAddr,ramLatch,ramReady,ramInstruction);
 PNGenerator RAND(clk, 0, randomnum);
 
 
