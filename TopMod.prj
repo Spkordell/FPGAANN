@@ -1,5 +1,7 @@
 verilog work "Neuron.v"
 verilog work "RAMControl.v"
+verilog work "pngenerator.v"
 verilog work "NetworkControl.v"
 verilog work "Network.v"
+verilog work "DNAInitializer.v"
 verilog work "TopMod.v"
