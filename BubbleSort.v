@@ -20,7 +20,6 @@
 //////////////////////////////////////////////////////////////////////////////////
 module BubbleSort(networkState,finished,fitness,activeNetwork,clk,ramBusDataOut,ramBusDataIn,ramBusAddr,ramLatch,ramReady,ramInstruction);
 
-
 //Network Configuration Parameters
 parameter INPUT_COUNT=2;					//number of inputes the network has
 parameter OUTPUT_COUNT=1;					//number of outputs the network has
@@ -36,7 +35,7 @@ input[3:0]activeNetwork;
 
 //Memory Control Interface
 input clk;
-output [15:0]ramDataBusIn;
+inout [15:0]ramBusDataIn;
 input [15:0]ramBusDataOut;
 inout [23:1]ramBusAddr;
 inout ramLatch;
@@ -47,9 +46,12 @@ parameter WRITE=1;
 
 reg ramLatchTemp;
 reg [23:1]ramBusAddrTemp=0;
-assign ramLatch = (networkState==1) ? ramLatchTemp : 1'bz;
-assign ramInstruction = (networkState==1) ? READ : 1'bz;
-assign ramBusAddr = (networkState==1) ? ramBusAddrTemp : 23'bzzzzzzzzzzzzzzzzzzzzzzz;
+reg ramInstructionTemp;
+reg [15:0]ramBusDataInTemp;
+assign ramLatch = (networkState==2) ? ramLatchTemp : 1'bz;
+assign ramInstruction = (networkState==2) ? ramInstructionTemp : 1'bz;
+assign ramBusAddr = (networkState==2) ? ramBusAddrTemp : 23'bzzzzzzzzzzzzzzzzzzzzzzz;
+assign ramBusDataIn = (networkState==2) ? ramBusDataInTemp : 16'bzzzzzzzzzzzzzzzz;
 	 
 //Network sort variables
 reg [15:0]networkFitness[NETWORKS_PER_POPULATION-1:0];
@@ -84,8 +86,7 @@ always @(posedge clk) begin
 				networkFitness[nc1+1]<=networkFitness[nc1];  	
 				networkFitness[nc1]<=networkFitness[nc1+1];		
 				sortState<=READ0;		
-				MemAdr<=(nc1)*(OUTPUT_COUNT+(NEURON_COUNT*CONNECTIONS));
-				ramState<=READ;
+				ramBusAddrTemp<=(nc1)*(OUTPUT_COUNT+(NEURON_COUNT*CONNECTIONS));
 				geneCounter<=0;
 			end
 			if (nc1<(NETWORKS_PER_POPULATION-1)) begin
@@ -99,109 +100,64 @@ always @(posedge clk) begin
 					finished<=1;
 				end
 			end
-		end else begin	
-			case (ramState)
-				READ: begin
-					MemDBOE<=0;
-					RamCE <= 0;
-					MemOE <= 0;
-					RamLB <= 0;
-					RamUB <= 0;	
-					ramState<=READWAIT0;
-				end
-				WRITE: begin
-					MemDBOE<=1;
+		end else begin
+			if (ramReady) begin
+				if (geneCounter<(OUTPUT_COUNT+(NEURON_COUNT*CONNECTIONS))-1) begin
+					ramBusAddrTemp<=ramBusAddrTemp+1;
+					geneCounter<=geneCounter+1;
+					if (sortState==READ0 || sortState==READ1) begin 
+						ramInstructionTemp<=READ;
+					end
 					if (sortState==WRITE0) begin
-						MemDBOut<=DNATemp1[geneCounter];
+						ramBusDataInTemp<=DNATemp1[geneCounter];
+						ramInstructionTemp<=WRITE;
 					end
 					if (sortState==WRITE1) begin
-						MemDBOut<=DNATemp0[geneCounter];
+						ramBusDataInTemp<=DNATemp0[geneCounter];
+						ramInstructionTemp<=WRITE;
 					end
-					RamCE<=0;
-					MemWE<=0;
-					RamLB<=0;
-					RamUB<=0;
-					ramState<=WRITEWAIT0;
-				end
-				RESET: begin
-					FlashCE <= 1'b1;
-					RamCE<=1'b1;
-					MemOE<=1'b1;
-					MemWE<=1'b1;
-					RamLB<=1'b1;
-					RamUB<=1'b1;
-					RamAdv<=1'b0;
-					RamClk<=1'b0;
-					if (geneCounter<(OUTPUT_COUNT+(NEURON_COUNT*CONNECTIONS))-1) begin
-						MemAdr<=MemAdr+1;
-						geneCounter<=geneCounter+1;
-						if (sortState==READ0 || sortState==READ1) begin 
-							ramState<=READ;
-						end
-						if (sortState==WRITE0 || sortState==WRITE1) begin 
-							ramState<=WRITE;
-						end
-					end else begin
-						case (sortState)
-							READ0: begin
-								MemAdr<=MemAdr+1;
-								geneCounter<=0;
-								sortState<=READ1;
-								ramState<=READ;
-							end
-							READ1: begin
-								MemAdr<=(nc1-1)*(OUTPUT_COUNT+(NEURON_COUNT*CONNECTIONS));
-								geneCounter<=0;
-								sortState<=WRITE0;
-								ramState<=WRITE;
-							end
-							WRITE0: begin
-								MemAdr<=MemAdr+1;
-								geneCounter<=0;
-								sortState<=WRITE1;
-								ramState<=WRITE;
-							end
-							WRITE1: begin
-								sortState<=CHECK;
-							end
-						endcase
-					end
-				end
-				WRITEWAIT0: begin
-					ramState<=RESET;
-				end
-				READWAIT0: begin
-					ramState<=READWAIT1;
-				end
-				READWAIT1: begin
-					ramState<=READWAIT2;
-				end
-				READWAIT2: begin
+					ramLatchTemp<=1;
+				end else begin
 					case (sortState)
-						READ0: DNATemp0[geneCounter]<=MemDBIn;
-						READ1: DNATemp1[geneCounter]<=MemDBIn;
+						READ0: begin
+							ramBusAddrTemp<=ramBusAddrTemp+1;
+							geneCounter<=0;
+							sortState<=READ1;
+						end
+						READ1: begin
+							ramBusAddrTemp<=(nc1-1)*(OUTPUT_COUNT+(NEURON_COUNT*CONNECTIONS));
+							geneCounter<=0;
+							sortState<=WRITE0;
+						end
+						WRITE0: begin
+							ramBusAddrTemp<=ramBusAddrTemp+1;
+							geneCounter<=0;
+							sortState<=WRITE1;
+						end
+						WRITE1: begin
+							sortState<=CHECK;
+						end
 					endcase
-					ramState<=RESET;
 				end
-			endcase
+			end else begin
+				ramLatchTemp<=0;
+			end
 		end
 	end else begin
 		nc1<=0;
 		nc2<=0;	
 		sortState<=CHECK;
 		finished<=0;
-		MemAdr<=0;
-		MemOE<=1;
-		MemWE<=1;
-		RamAdv<=0;
-		RamCE<=1;
-		RamClk<=0;
-		RamLB<=1;
-		RamUB<=1;
-		FlashCE<=1;
-		MemDBOE<=0;
+		ramBusAddrTemp<=0;
 		networkFitness[activeNetwork]<=fitness;
 	end
+end
+
+always @(posedge ramReady) begin
+	case (sortState)
+		READ0: DNATemp0[geneCounter]<=ramBusDataOut;
+		READ1: DNATemp1[geneCounter]<=ramBusDataOut;
+	endcase
 end
 
 endmodule 

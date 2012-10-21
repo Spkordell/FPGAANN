@@ -1,0 +1,5 @@
+set -tmpdir "M:/FPGAWorkspace/FPGAANN/FPGAANN/xst/projnav.tmp"
+set -xsthdpdir "M:/FPGAWorkspace/FPGAANN/FPGAANN/xst"
+elaborate
+-ifn BubbleSort.prj
+-ifmt mixed

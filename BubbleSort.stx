@@ -1,0 +1,33 @@
+Release 13.4 - xst O.87xd (nt64)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to M:/FPGAWorkspace/FPGAANN/FPGAANN/xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.20 secs
+ 
+--> Parameter xsthdpdir set to M:/FPGAWorkspace/FPGAANN/FPGAANN/xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.20 secs
+ 
+--> WARNING:Xst:3164 - Option "-debug" found multiple times in the command line. Only the first occurence is considered.
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling verilog file "BubbleSort.v" in library work
+ERROR:HDLCompilers:28 - "BubbleSort.v" line 108 'ramInstructionTemp' has not been declared
+ERROR:HDLCompilers:28 - "BubbleSort.v" line 112 'ramInstructionTemp' has not been declared
+ERROR:HDLCompilers:28 - "BubbleSort.v" line 116 'ramInstructionTemp' has not been declared
+Module <BubbleSort> compiled
+Analysis of file <"BubbleSort.prj"> failed.
+--> 
+
+Total memory usage is 209416 kilobytes
+
+Number of errors   :    3 (   0 filtered)
+Number of warnings :    1 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+

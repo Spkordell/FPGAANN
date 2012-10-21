@@ -51,8 +51,9 @@ wire [23:1]ramBusAddr;
 wire ramReady;
 
 reg [63:0]timeToRun=25000000;
+reg fitness=1;
 
-//Netowrk Control Lines
+//Network Control Lines
 wire networkState;
 wire initializeFinished;
 wire sortFinished;
@@ -66,10 +67,12 @@ wire [7:0]generationCounter;
 //Misc. Connection Lines
 wire [7:0]randomnum;
 
+
 RAMControl RC(clk,ramInstruction,ramLatch,ramBusDataOut,ramBusDataIn,ramBusAddr,MemAdr,MemDB,RamCE,MemOE,MemWE,RamAdv,RamClk,RamLB,RamUB,FlashCE,ramReady);
 Network NN(timeToRun,networkState,activeNetwork,networkFinished,nin,nout,clk,ramBusDataOut,ramBusAddr,ramLatch,ramReady,ramInstruction);
 NetworkControl NC(clk,networkState,initializeFinished,sortFinished,crossFinished,networkFinished,generationCounter);
 DNAInitializer INIT(randomizeEnabled,networkState,initializeFinished,randomnum,clk,ramBusDataIn,ramBusAddr,ramLatch,ramReady,ramInstruction);
+BubbleSort BS(networkState,sortFinished,fitness,activeNetwork,clk,ramBusDataOut,ramBusDataIn,ramBusAddr,ramLatch,ramReady,ramInstruction);
 PNGenerator RAND(clk, 0, randomnum);
 
 
