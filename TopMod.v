@@ -39,6 +39,7 @@ output RamLB;
 output RamUB;
 output FlashCE;
 
+//Ram lines
 wire ramInstruction;
 wire ramLatch;
 wire [15:0]ramBusDataOut;
@@ -47,13 +48,21 @@ wire [23:1]ramBusAddr=0;
 wire ramReady;
 
 reg [63:0]timeToRun=25000000;
-reg networkState=1;
-wire [3:0]activeNetwork;
+
+//Netowrk Control Lines
+wire networkState;
+wire initializeFinished;
+wire sortFinished;
+wire crossFinished;
 wire networkFinished;
 
+//Information Lines
+wire [3:0]activeNetwork;
+wire [7:0]generationCounter;
 
 RAMControl RC(clk,ramInstruction,ramLatch,ramBusDataOut,ramBusDataIn,ramBusAddr,MemAdr,MemDB,RamCE,MemOE,MemWE,RamAdv,RamClk,RamLB,RamUB,FlashCE,ramReady);
 Network NN(timeToRun,networkState,activeNetwork,networkFinished,nin,nout,clk,ramBusDataOut,ramBusAddr,ramLatch,ramReady,ramInstruction);
+NetworkControl NC(clk,networkState,initializeFinished,sortFinished,crossFinished,networkFinished,generationCounter);
 
 /*
 
