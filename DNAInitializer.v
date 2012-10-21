@@ -47,7 +47,7 @@ parameter WRITE=1;
 
 reg ramLatchTemp;
 reg [23:1]ramBusAddrTemp=0;
-reg [15:0]ramBusDataInTemp;
+reg [15:0]ramBusDataInTemp=0;
 assign ramLatch = (networkState==0) ? ramLatchTemp : 1'bz;
 assign ramInstruction = (networkState==0) ? WRITE : 1'bz;
 assign ramBusAddr = (networkState==0) ? ramBusAddrTemp : 23'bzzzzzzzzzzzzzzzzzzzzzzz;

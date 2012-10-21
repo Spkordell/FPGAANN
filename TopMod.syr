@@ -3,14 +3,14 @@ Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.28 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.23 secs
  
 --> Parameter xsthdpdir set to xst
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.28 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.23 secs
  
 --> Reading design: TopMod.prj
 
@@ -303,19 +303,17 @@ Performing bidirectional port resolution...
 
 Synthesizing Unit <RAMControl>.
     Related source file is "RAMControl.v".
-WARNING:Xst:646 - Signal <MemDBIn> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
     Found 16-bit tristate buffer for signal <MemDB>.
     Found 16-bit register for signal <ramBusDataOut>.
     Found 1-bit register for signal <MemOE>.
     Found 1-bit register for signal <MemWE>.
-    Found 23-bit register for signal <MemAdr>.
     Found 1-bit register for signal <RamCE>.
     Found 1-bit register for signal <Ready>.
     Found 1-bit register for signal <MemDBOE>.
     Found 16-bit register for signal <MemDBOut>.
     Found 4-bit register for signal <ramState>.
     Summary:
-	inferred  64 D-type flip-flop(s).
+	inferred  41 D-type flip-flop(s).
 	inferred  16 Tristate(s).
 Unit <RAMControl> synthesized.
 
@@ -480,11 +478,11 @@ Macro Statistics
  5-bit up counter                                      : 1
  64-bit up counter                                     : 1
  8-bit up counter                                      : 1
-# Registers                                            : 55
+# Registers                                            : 54
  1-bit register                                        : 21
  16-bit register                                       : 26
  2-bit register                                        : 1
- 23-bit register                                       : 3
+ 23-bit register                                       : 2
  3-bit register                                        : 1
  4-bit register                                        : 1
  5-bit register                                        : 1
@@ -588,7 +586,7 @@ WARNING:Xst:1710 - FF/Latch <networkFitness_4_1> (without init value) has a cons
 WARNING:Xst:1710 - FF/Latch <networkFitness_4_0> (without init value) has a constant value of 1 in block <BS>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <networkFitness_1_1> (without init value) has a constant value of 0 in block <BS>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <networkFitness_1_0> (without init value) has a constant value of 1 in block <BS>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <ramBusDataInTemp_2> (without init value) has a constant value of 0 in block <INIT>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <ramBusDataInTemp_2> has a constant value of 0 in block <INIT>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <geneCounter_0> (without init value) has a constant value of 0 in block <BS>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <networkFitness_15_1> (without init value) has a constant value of 0 in block <BS>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <networkFitness_15_0> (without init value) has a constant value of 1 in block <BS>. This FF/Latch will be trimmed during the optimization process.
@@ -697,7 +695,6 @@ WARNING:Xst:2677 - Node <ramBusDataOut_12> of sequential type is unconnected in 
 WARNING:Xst:2677 - Node <ramBusDataOut_13> of sequential type is unconnected in block <RC>.
 WARNING:Xst:2677 - Node <ramBusDataOut_14> of sequential type is unconnected in block <RC>.
 WARNING:Xst:2677 - Node <ramBusDataOut_15> of sequential type is unconnected in block <RC>.
-WARNING:Xst:2404 -  FFs/Latches <ramBusDataInTemp<15:2>> (without init value) have a constant value of 0 in block <DNAInitializer>.
 
 Synthesizing (advanced) Unit <BubbleSort>.
 	Found pipelined multiplier on signal <ramBusAddrTemp_mult0000>:
@@ -822,8 +819,8 @@ Macro Statistics
  5-bit up counter                                      : 1
  64-bit up counter                                     : 1
  8-bit up counter                                      : 1
-# Registers                                            : 445
- Flip-Flops                                            : 445
+# Registers                                            : 436
+ Flip-Flops                                            : 436
 # Comparators                                          : 17
  16-bit comparator greatequal                          : 2
  16-bit comparator less                                : 1
@@ -852,6 +849,20 @@ Macro Statistics
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
+WARNING:Xst:1293 - FF/Latch <ramBusDataInTemp_2> has a constant value of 0 in block <DNAInitializer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <ramBusDataInTemp_3> has a constant value of 0 in block <DNAInitializer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <ramBusDataInTemp_4> has a constant value of 0 in block <DNAInitializer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <ramBusDataInTemp_5> has a constant value of 0 in block <DNAInitializer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <ramBusDataInTemp_6> has a constant value of 0 in block <DNAInitializer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <ramBusDataInTemp_7> has a constant value of 0 in block <DNAInitializer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <ramBusDataInTemp_8> has a constant value of 0 in block <DNAInitializer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <ramBusDataInTemp_9> has a constant value of 0 in block <DNAInitializer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <ramBusDataInTemp_10> has a constant value of 0 in block <DNAInitializer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <ramBusDataInTemp_11> has a constant value of 0 in block <DNAInitializer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <ramBusDataInTemp_12> has a constant value of 0 in block <DNAInitializer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <ramBusDataInTemp_13> has a constant value of 0 in block <DNAInitializer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <ramBusDataInTemp_14> has a constant value of 0 in block <DNAInitializer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <ramBusDataInTemp_15> has a constant value of 0 in block <DNAInitializer>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <networkFitness_12_6> (without init value) has a constant value of 0 in block <BubbleSort>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <networkFitness_12_5> (without init value) has a constant value of 0 in block <BubbleSort>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <networkFitness_12_4> (without init value) has a constant value of 0 in block <BubbleSort>. This FF/Latch will be trimmed during the optimization process.
@@ -1157,7 +1168,7 @@ INFO:Xst:2261 - The FF/Latch <nc1_2> in Unit <BubbleSort> is equivalent to the f
 INFO:Xst:2261 - The FF/Latch <nc1_1> in Unit <BubbleSort> is equivalent to the following FF/Latch, which will be removed : <Mmult_ramBusAddrTemp_mult0000_3> 
 INFO:Xst:2261 - The FF/Latch <nc1_4> in Unit <BubbleSort> is equivalent to the following FF/Latch, which will be removed : <Mmult_ramBusAddrTemp_mult0000_0> 
 INFO:Xst:2261 - The FF/Latch <nc1_3> in Unit <BubbleSort> is equivalent to the following FF/Latch, which will be removed : <Mmult_ramBusAddrTemp_mult0000_1> 
-WARNING:Xst:2170 - Unit Network : the following signal(s) form a combinatorial loop: Oconnection<2>, Iconnection<3>, neuronGenerate[2].U/Madd_out_addsub0001_lut<0>, nout, neuronGenerate[2].U/out_cmp_ge0000.
+WARNING:Xst:2170 - Unit Network : the following signal(s) form a combinatorial loop: Oconnection<2>, nout, neuronGenerate[2].U/out_cmp_ge0000, Iconnection<3>, neuronGenerate[2].U/Madd_out_addsub0001_lut<0>.
 WARNING:Xst:2042 - Unit Network: 25 internal tristates are replaced by logic (pull-up yes): ramBusAddr<10>, ramBusAddr<11>, ramBusAddr<12>, ramBusAddr<13>, ramBusAddr<14>, ramBusAddr<15>, ramBusAddr<16>, ramBusAddr<17>, ramBusAddr<18>, ramBusAddr<19>, ramBusAddr<1>, ramBusAddr<20>, ramBusAddr<21>, ramBusAddr<22>, ramBusAddr<23>, ramBusAddr<2>, ramBusAddr<3>, ramBusAddr<4>, ramBusAddr<5>, ramBusAddr<6>, ramBusAddr<7>, ramBusAddr<8>, ramBusAddr<9>, ramInstruction, ramLatch.
 WARNING:Xst:2042 - Unit BubbleSort: 41 internal tristates are replaced by logic (pull-up yes): ramBusAddr<10>, ramBusAddr<11>, ramBusAddr<12>, ramBusAddr<13>, ramBusAddr<14>, ramBusAddr<15>, ramBusAddr<16>, ramBusAddr<17>, ramBusAddr<18>, ramBusAddr<19>, ramBusAddr<1>, ramBusAddr<20>, ramBusAddr<21>, ramBusAddr<22>, ramBusAddr<23>, ramBusAddr<2>, ramBusAddr<3>, ramBusAddr<4>, ramBusAddr<5>, ramBusAddr<6>, ramBusAddr<7>, ramBusAddr<8>, ramBusAddr<9>, ramBusDataIn<0>, ramBusDataIn<10>, ramBusDataIn<11>, ramBusDataIn<12>, ramBusDataIn<13>, ramBusDataIn<14>, ramBusDataIn<15>, ramBusDataIn<1>, ramBusDataIn<2>, ramBusDataIn<3>, ramBusDataIn<4>, ramBusDataIn<5>, ramBusDataIn<6>, ramBusDataIn<7>, ramBusDataIn<8>, ramBusDataIn<9>, ramInstruction, ramLatch.
 WARNING:Xst:2042 - Unit DNAInitializer: 41 internal tristates are replaced by logic (pull-up yes): ramBusAddr<10>, ramBusAddr<11>, ramBusAddr<12>, ramBusAddr<13>, ramBusAddr<14>, ramBusAddr<15>, ramBusAddr<16>, ramBusAddr<17>, ramBusAddr<18>, ramBusAddr<19>, ramBusAddr<1>, ramBusAddr<20>, ramBusAddr<21>, ramBusAddr<22>, ramBusAddr<23>, ramBusAddr<2>, ramBusAddr<3>, ramBusAddr<4>, ramBusAddr<5>, ramBusAddr<6>, ramBusAddr<7>, ramBusAddr<8>, ramBusAddr<9>, ramBusDataIn<0>, ramBusDataIn<10>, ramBusDataIn<11>, ramBusDataIn<12>, ramBusDataIn<13>, ramBusDataIn<14>, ramBusDataIn<15>, ramBusDataIn<1>, ramBusDataIn<2>, ramBusDataIn<3>, ramBusDataIn<4>, ramBusDataIn<5>, ramBusDataIn<6>, ramBusDataIn<7>, ramBusDataIn<8>, ramBusDataIn<9>, ramInstruction, ramLatch.
@@ -1215,7 +1226,7 @@ WARNING:Xst:2677 - Node <RAND/randomnum_3> of sequential type is unconnected in 
 WARNING:Xst:2677 - Node <RAND/randomnum_2> of sequential type is unconnected in block <TopMod>.
 
 Mapping all equations...
-WARNING:Xst:2170 - Unit TopMod : the following signal(s) form a combinatorial loop: N31, NN/Oconnection<1>, NN/neuronGenerate[0].U/out1, NN/neuronGenerate[0].U/out20, nout<0>.
+WARNING:Xst:2170 - Unit TopMod : the following signal(s) form a combinatorial loop: NN/neuronGenerate[0].U/out20, nout<0>, NN/Oconnection<1>, NN/neuronGenerate[0].U/out1, N33.
 Building and optimizing final netlist ...
 Found area constraint ratio of 100 (+ 5) on block TopMod, actual ratio is 3.
 
@@ -1225,8 +1236,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 217
- Flip-Flops                                            : 217
+# Registers                                            : 194
+ Flip-Flops                                            : 194
 
 =========================================================================
 
@@ -1260,17 +1271,18 @@ Cell Usage :
 #      INV                         : 13
 #      LUT1                        : 136
 #      LUT2                        : 16
-#      LUT3                        : 72
+#      LUT3                        : 71
 #      LUT3_D                      : 1
+#      LUT3_L                      : 1
 #      LUT4                        : 60
 #      LUT4_L                      : 1
 #      MUXCY                       : 163
 #      MUXF5                       : 8
 #      VCC                         : 1
 #      XORCY                       : 133
-# FlipFlops/Latches                : 217
+# FlipFlops/Latches                : 194
 #      FD                          : 9
-#      FDE                         : 67
+#      FDE                         : 44
 #      FDR                         : 3
 #      FDRE                        : 129
 #      FDS                         : 9
@@ -1288,8 +1300,8 @@ Device utilization summary:
 
 Selected Device : 3s500efg320-4 
 
- Number of Slices:                      171  out of   4656     3%  
- Number of Slice Flip Flops:            215  out of   9312     2%  
+ Number of Slices:                      157  out of   4656     3%  
+ Number of Slice Flip Flops:            192  out of   9312     2%  
  Number of 4 input LUTs:                299  out of   9312     3%  
  Number of IOs:                          50
  Number of bonded IOBs:                  50  out of    232    21%  
@@ -1317,7 +1329,7 @@ Clock Information:
 -----------------------------------+------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
-clk                                | BUFGP                  | 207   |
+clk                                | BUFGP                  | 184   |
 RC/Ready                           | NONE(NN/DNA_0_1)       | 10    |
 -----------------------------------+------------------------+-------+
 INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
@@ -1342,7 +1354,7 @@ All values displayed in nanoseconds (ns)
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk'
   Clock period: 7.619ns (frequency: 131.247MHz)
-  Total number of paths / destination ports: 15566 / 517
+  Total number of paths / destination ports: 15405 / 471
 -------------------------------------------------------------------------
 Delay:               7.619ns (Levels of Logic = 22)
   Source:            NN/cycleCounter_6 (FF)
@@ -1395,7 +1407,7 @@ Offset:              1.946ns (Levels of Logic = 1)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IOBUF:IO->O           1   1.218   0.420  MemDB_1_IOBUF (N37)
+     IOBUF:IO->O           1   1.218   0.420  MemDB_1_IOBUF (N39)
      FDE:D                     0.308          RC/ramBusDataOut_1
     ----------------------------------------
     Total                      1.946ns (1.526ns logic, 0.420ns route)
@@ -1403,7 +1415,7 @@ Offset:              1.946ns (Levels of Logic = 1)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
-  Total number of paths / destination ports: 65 / 43
+  Total number of paths / destination ports: 111 / 43
 -------------------------------------------------------------------------
 Offset:              9.937ns (Levels of Logic = 6)
   Source:            NN/enableNeurons (FF)
@@ -1479,14 +1491,14 @@ Delay:               12.492ns (Levels of Logic = 9)
 =========================================================================
 
 
-Total REAL time to Xst completion: 20.00 secs
-Total CPU time to Xst completion: 20.47 secs
+Total REAL time to Xst completion: 21.00 secs
+Total CPU time to Xst completion: 20.31 secs
  
 --> 
 
-Total memory usage is 283688 kilobytes
+Total memory usage is 283816 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  615 (   0 filtered)
+Number of warnings :  627 (   0 filtered)
 Number of infos    :   34 (   0 filtered)
 

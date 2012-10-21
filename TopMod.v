@@ -41,6 +41,8 @@ output FlashCE;
 
 //Some network settings
 reg randomizeEnabled=1;
+reg [63:0]timeToRun=25000000;
+reg fitness=1;
 
 //Ram lines
 wire ramInstruction;
@@ -49,9 +51,6 @@ wire [15:0]ramBusDataOut;
 wire [15:0]ramBusDataIn;
 wire [23:1]ramBusAddr;
 wire ramReady;
-
-reg [63:0]timeToRun=25000000;
-reg fitness=1;
 
 //Network Control Lines
 wire networkState;

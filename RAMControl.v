@@ -28,7 +28,7 @@ output reg [15:0]ramBusDataOut;
 input [23:1]ramBusAddr;
 
 inout  [15:0]MemDB;
-output reg [23:1]MemAdr;
+output [23:1]MemAdr;
 output reg RamCE;
 output reg MemOE;
 output reg MemWE;
@@ -67,6 +67,8 @@ parameter WRITEWAIT2=9;
 parameter WRITEWAIT3=10;
 reg [3:0]ramState=RESET;
 
+assign MemAdr=ramBusAddr;
+
 always @(posedge clk) begin
 	case (ramState)
 		RESET: begin
@@ -74,7 +76,7 @@ always @(posedge clk) begin
 			MemOE<=1;
 			MemWE<=1;
 			MemDBOE<=0;
-			MemAdr<=ramBusAddr;
+			//MemAdr<=ramBusAddr;
 			if (latch) begin
 				Ready<=0;
 				if (Instruction==READ) begin
@@ -104,7 +106,7 @@ always @(posedge clk) begin
 		READWAIT3: begin
 			ramState<=RESET;
 			Ready<=1;
-			ramBusDataOut<=MemDB;			
+			ramBusDataOut<=MemDBIn;			
 		end
 		WRITEWAIT0: ramState<=WRITEWAIT1;
 		WRITEWAIT1: ramState<=WRITEWAIT2;
