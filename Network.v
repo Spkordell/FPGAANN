@@ -44,12 +44,18 @@ output reg networkFinished=0;
 //memory control
 input clk;
 input [15:0]ramBusDataOut;
-output reg [23:1]ramBusAddr=0;
-output reg ramLatch;
+inout [23:1]ramBusAddr;
+inout ramLatch;
 input ramReady;
-output reg ramInstruction;
+inout ramInstruction;
 parameter READ=0;
 parameter WRITE=1;
+
+reg ramLatchTemp;
+reg [23:1]ramBusAddrTemp=0;
+assign ramLatch = (networkState==1) ? ramLatchTemp : 1'bz;
+assign ramInstruction = (networkState==1) ? READ : 1'bz;
+assign ramBusAddr = (networkState==1) ? ramBusAddrTemp : 23'bzzzzzzzzzzzzzzzzzzzzzzz;
 
 //Network connection variables
 reg [15:0]DNA[OUTPUT_COUNT+(NEURON_COUNT*CONNECTIONS)-1:0];
@@ -111,20 +117,19 @@ always @(posedge clk) begin
 		end
 		if (ramReady) begin
 			if (DNACounter<=(OUTPUT_COUNT+(NEURON_COUNT*CONNECTIONS))-1) begin		
-				ramBusAddr<=ramBusAddr+1;		
+				ramBusAddrTemp<=ramBusAddrTemp+1;		
 				DNACounter<=DNACounter+1;
 				enableNeurons<=0;
-				ramInstruction<=READ;
-				ramLatch<=1;
+				ramLatchTemp<=1;
 			end else begin
 				enableNeurons<=1;		
 			end
 		end else begin
-			ramLatch<=0;
+			ramLatchTemp<=0;
 		end
 	end else begin
 		DNACounter<=0;
-		ramBusAddr<=0;
+		ramBusAddrTemp<=0;
 		networkFinished<=0;
 		activeNetwork<=0;
 		cycleCounter<=0;

@@ -46,8 +46,8 @@ reg randomizeEnabled=1;
 wire ramInstruction;
 wire ramLatch;
 wire [15:0]ramBusDataOut;
-wire [15:0]ramBusDataIn=0;
-wire [23:1]ramBusAddr=0;
+wire [15:0]ramBusDataIn;
+wire [23:1]ramBusAddr;
 wire ramReady;
 
 reg [63:0]timeToRun=25000000;
@@ -69,7 +69,7 @@ wire [7:0]randomnum;
 RAMControl RC(clk,ramInstruction,ramLatch,ramBusDataOut,ramBusDataIn,ramBusAddr,MemAdr,MemDB,RamCE,MemOE,MemWE,RamAdv,RamClk,RamLB,RamUB,FlashCE,ramReady);
 Network NN(timeToRun,networkState,activeNetwork,networkFinished,nin,nout,clk,ramBusDataOut,ramBusAddr,ramLatch,ramReady,ramInstruction);
 NetworkControl NC(clk,networkState,initializeFinished,sortFinished,crossFinished,networkFinished,generationCounter);
-DNAInitializer INIT(randomizeEnabled,networkState,initializeFinished,randomNum,clk,ramBusDataIn,ramBusAddr,ramLatch,ramReady,ramInstruction);
+DNAInitializer INIT(randomizeEnabled,networkState,initializeFinished,randomnum,clk,ramBusDataIn,ramBusAddr,ramLatch,ramReady,ramInstruction);
 PNGenerator RAND(clk, 0, randomnum);
 
 

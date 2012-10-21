@@ -49,3 +49,45 @@ trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml TopMod.twx TopMod.ncd -o TopMo
 bitgen -intstyle ise -f TopMod.ut TopMod.ncd 
 xst -intstyle ise -ifn "M:/FPGAWorkspace/FPGAANN/FPGAANN/TopMod.xst" -ofn "M:/FPGAWorkspace/FPGAANN/FPGAANN/TopMod.syr" 
 xst -intstyle ise -ifn "M:/FPGAWorkspace/FPGAANN/FPGAANN/TopMod.xst" -ofn "M:/FPGAWorkspace/FPGAANN/FPGAANN/TopMod.syr" 
+xst -intstyle ise -ifn "M:/FPGAWorkspace/FPGAANN/FPGAANN/TopMod.xst" -ofn "M:/FPGAWorkspace/FPGAANN/FPGAANN/TopMod.syr" 
+xst -intstyle ise -ifn "M:/FPGAWorkspace/FPGAANN/FPGAANN/TopMod.xst" -ofn "M:/FPGAWorkspace/FPGAANN/FPGAANN/TopMod.syr" 
+xst -intstyle ise -ifn "M:/FPGAWorkspace/FPGAANN/FPGAANN/TopMod.xst" -ofn "M:/FPGAWorkspace/FPGAANN/FPGAANN/TopMod.syr" 
+xst -intstyle ise -ifn "M:/FPGAWorkspace/FPGAANN/FPGAANN/TopMod.xst" -ofn "M:/FPGAWorkspace/FPGAANN/FPGAANN/TopMod.syr" 
+xst -intstyle ise -ifn "M:/FPGAWorkspace/FPGAANN/FPGAANN/TopMod.xst" -ofn "M:/FPGAWorkspace/FPGAANN/FPGAANN/TopMod.syr" 
+xst -intstyle ise -ifn "M:/FPGAWorkspace/FPGAANN/FPGAANN/TopMod.xst" -ofn "M:/FPGAWorkspace/FPGAANN/FPGAANN/TopMod.syr" 
+xst -intstyle ise -ifn "M:/FPGAWorkspace/FPGAANN/FPGAANN/TopMod.xst" -ofn "M:/FPGAWorkspace/FPGAANN/FPGAANN/TopMod.syr" 
+xst -intstyle ise -ifn "M:/FPGAWorkspace/FPGAANN/FPGAANN/TopMod.xst" -ofn "M:/FPGAWorkspace/FPGAANN/FPGAANN/TopMod.syr" 
+xst -intstyle ise -ifn "M:/FPGAWorkspace/FPGAANN/FPGAANN/TopMod.xst" -ofn "M:/FPGAWorkspace/FPGAANN/FPGAANN/TopMod.syr" 
+xst -intstyle ise -ifn "M:/FPGAWorkspace/FPGAANN/FPGAANN/TopMod.xst" -ofn "M:/FPGAWorkspace/FPGAANN/FPGAANN/TopMod.syr" 
+xst -intstyle ise -ifn "M:/FPGAWorkspace/FPGAANN/FPGAANN/TopMod.xst" -ofn "M:/FPGAWorkspace/FPGAANN/FPGAANN/TopMod.syr" 
+xst -intstyle ise -ifn "M:/FPGAWorkspace/FPGAANN/FPGAANN/TopMod.xst" -ofn "M:/FPGAWorkspace/FPGAANN/FPGAANN/TopMod.syr" 
+xst -intstyle ise -ifn "M:/FPGAWorkspace/FPGAANN/FPGAANN/TopMod.xst" -ofn "M:/FPGAWorkspace/FPGAANN/FPGAANN/TopMod.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc TopMod.ucf -p xc3s500e-fg320-4 TopMod.ngc TopMod.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o TopMod_map.ncd TopMod.ngd TopMod.pcf 
+par -w -intstyle ise -ol high -t 1 TopMod_map.ncd TopMod.ncd TopMod.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml TopMod.twx TopMod.ncd -o TopMod.twr TopMod.pcf -ucf TopMod.ucf 
+bitgen -intstyle ise -f TopMod.ut TopMod.ncd 
+xst -intstyle ise -ifn "M:/FPGAWorkspace/FPGAANN/FPGAANN/TopMod.xst" -ofn "M:/FPGAWorkspace/FPGAANN/FPGAANN/TopMod.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc TopMod.ucf -p xc3s500e-fg320-4 TopMod.ngc TopMod.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o TopMod_map.ncd TopMod.ngd TopMod.pcf 
+par -w -intstyle ise -ol high -t 1 TopMod_map.ncd TopMod.ncd TopMod.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml TopMod.twx TopMod.ncd -o TopMod.twr TopMod.pcf -ucf TopMod.ucf 
+bitgen -intstyle ise -f TopMod.ut TopMod.ncd 
+xst -intstyle ise -ifn "M:/FPGAWorkspace/FPGAANN/FPGAANN/TopMod.xst" -ofn "M:/FPGAWorkspace/FPGAANN/FPGAANN/TopMod.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc TopMod.ucf -p xc3s500e-fg320-4 TopMod.ngc TopMod.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o TopMod_map.ncd TopMod.ngd TopMod.pcf 
+par -w -intstyle ise -ol high -t 1 TopMod_map.ncd TopMod.ncd TopMod.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml TopMod.twx TopMod.ncd -o TopMod.twr TopMod.pcf -ucf TopMod.ucf 
+bitgen -intstyle ise -f TopMod.ut TopMod.ncd 
+xst -intstyle ise -ifn "M:/FPGAWorkspace/FPGAANN/FPGAANN/TopMod.xst" -ofn "M:/FPGAWorkspace/FPGAANN/FPGAANN/TopMod.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc TopMod.ucf -p xc3s500e-fg320-4 TopMod.ngc TopMod.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o TopMod_map.ncd TopMod.ngd TopMod.pcf 
+par -w -intstyle ise -ol high -t 1 TopMod_map.ncd TopMod.ncd TopMod.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml TopMod.twx TopMod.ncd -o TopMod.twr TopMod.pcf -ucf TopMod.ucf 
+bitgen -intstyle ise -f TopMod.ut TopMod.ncd 
+xst -intstyle ise -ifn "M:/FPGAWorkspace/FPGAANN/FPGAANN/TopMod.xst" -ofn "M:/FPGAWorkspace/FPGAANN/FPGAANN/TopMod.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc TopMod.ucf -p xc3s500e-fg320-4 TopMod.ngc TopMod.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o TopMod_map.ncd TopMod.ngd TopMod.pcf 
+par -w -intstyle ise -ol high -t 1 TopMod_map.ncd TopMod.ncd TopMod.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml TopMod.twx TopMod.ncd -o TopMod.twr TopMod.pcf -ucf TopMod.ucf 
+bitgen -intstyle ise -f TopMod.ut TopMod.ncd 

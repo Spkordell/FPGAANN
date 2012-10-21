@@ -9,29 +9,36 @@ Target Device  : xc3s500e
 Target Package : fg320
 Target Speed   : -4
 Mapper Version : spartan3e -- $Revision: 1.55 $
-Mapped Date    : Sat Oct 20 21:22:56 2012
+Mapped Date    : Sat Oct 20 23:51:12 2012
 
 Design Summary
 --------------
 Number of errors:      0
 Number of warnings:    0
 Logic Utilization:
-  Number of Slice Flip Flops:             8 out of   9,312    1%
-  Number of 4 input LUTs:                13 out of   9,312    1%
+  Number of Slice Flip Flops:           200 out of   9,312    2%
+  Number of 4 input LUTs:               134 out of   9,312    1%
 Logic Distribution:
-  Number of occupied Slices:              7 out of   4,656    1%
-    Number of Slices containing only related logic:       7 out of       7 100%
-    Number of Slices containing unrelated logic:          0 out of       7   0%
+  Number of occupied Slices:            153 out of   4,656    3%
+    Number of Slices containing only related logic:     153 out of     153 100%
+    Number of Slices containing unrelated logic:          0 out of     153   0%
       *See NOTES below for an explanation of the effects of unrelated logic.
-  Total Number of 4 input LUTs:          13 out of   9,312    1%
+  Total Number of 4 input LUTs:         270 out of   9,312    2%
+    Number used as logic:               134
+    Number used as a route-thru:        136
+
+  The Slice Logic Distribution report is not meaningful if the design is
+  over-mapped for a non-slice resource or if Placement fails.
+
   Number of bonded IOBs:                 50 out of     232   21%
+    IOB Flip Flops:                       2
   Number of BUFGMUXs:                     1 out of      24    4%
 
-Average Fanout of Non-Clock Nets:                4.86
+Average Fanout of Non-Clock Nets:                2.90
 
-Peak Memory Usage:  247 MB
-Total REAL time to MAP completion:  2 secs 
-Total CPU time to MAP completion:   2 secs 
+Peak Memory Usage:  249 MB
+Total REAL time to MAP completion:  3 secs 
+Total CPU time to MAP completion:   3 secs 
 
 NOTES:
 
@@ -126,8 +133,8 @@ Section 6 - IOB Properties
 | MemAdr<21>                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
 | MemAdr<22>                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
 | MemAdr<23>                         | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
-| MemDB<0>                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
-| MemDB<1>                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
+| MemDB<0>                           | IOB              | BIDIR     | LVCMOS25             |       | 12       | SLOW | IFF1         |          | 0 / 3    |
+| MemDB<1>                           | IOB              | BIDIR     | LVCMOS25             |       | 12       | SLOW | IFF1         |          | 0 / 3    |
 | MemDB<2>                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
 | MemDB<3>                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |
 | MemDB<4>                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          | 0 / 0    |

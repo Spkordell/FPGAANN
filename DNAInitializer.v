@@ -38,12 +38,18 @@ input [8:0]randomNum;
 //Memory Control
 input clk;
 output reg [15:0]ramBusDataIn;
-output reg [23:1]ramBusAddr=0;
-output reg ramLatch;
+inout [23:1]ramBusAddr;
+inout ramLatch;
 input ramReady;
-output reg ramInstruction;
+inout ramInstruction;
 parameter READ=0;
 parameter WRITE=1;
+
+reg ramLatchTemp;
+reg [23:1]ramBusAddrTemp=0;
+assign ramLatch = (networkState==0) ? ramLatchTemp : 1'bz;
+assign ramInstruction = (networkState==0) ? WRITE : 1'bz;
+assign ramBusAddr = (networkState==0) ? ramBusAddrTemp : 23'bzzzzzzzzzzzzzzzzzzzzzzz;
 
 //randomization mapping
 wire [15:0]randomGene;
@@ -55,22 +61,19 @@ always @(posedge clk) begin
 	if (networkState==0) begin
 		if (randomizeEnabled) begin
 			if (ramReady) begin
-				if (ramBusAddr<((OUTPUT_COUNT+(NEURON_COUNT*CONNECTIONS))*NETWORKS_PER_POPULATION)) begin	
+				if (ramBusAddrTemp<((OUTPUT_COUNT+(NEURON_COUNT*CONNECTIONS))*NETWORKS_PER_POPULATION)) begin	
 					finished<=0;
-					ramInstruction<=WRITE;
 					ramBusDataIn<=randomGene;
-					ramBusAddr<=ramBusAddr+1;
-					ramLatch<=1;					
+					ramBusAddrTemp<=ramBusAddrTemp+1;
+					ramLatchTemp<=1;					
 				end else begin
 					finished<=1;
 				end
+			end else begin
+				ramLatchTemp<=0;		
 			end
 		end
 	end
-end
-
-always @(negedge clk) begin
-	ramLatch<=0;
 end
 
 endmodule 
