@@ -41,7 +41,7 @@ input [1:0]networkState;
 output reg [3:0]activeNetwork=0;
 output reg networkFinished=0;
 
-//memory access pins
+//memory control
 input clk;
 input [15:0]ramBusDataOut;
 output reg [23:1]ramBusAddr=0;
