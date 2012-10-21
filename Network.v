@@ -16,17 +16,19 @@
 // Revision: 
 // Revision 0.01 - File Created
 // Additional Comments: 
-//
+//Experimental Top Module, likely to be replaced with a more permenent design later
 //////////////////////////////////////////////////////////////////////////////////
-module Network1(timeToRun,networkState,activeNetwork,networkFinished,nin,nout,clk,ramBusDataOut,ramBusAddr,ramLatch,ramReady,ramInstruction);
+module Network(timeToRun,networkState,activeNetwork,networkFinished,nin,nout,clk,ramBusDataOut,ramBusAddr,ramLatch,ramReady,ramInstruction);
 //loads and runs network
 
 //network configuration parameters
-parameter INPUT_COUNT=2;					//number of inputes the network has
+parameter INPUT_COUNT=1;					//number of inputes the network has
 parameter OUTPUT_COUNT=1;					//number of outputs the network has
-parameter NEURON_COUNT=5;					//number of neurons in the network
+parameter NEURON_COUNT=2;					//number of neurons in the network
 parameter CONNECTIONS=2;					//number of inputs each neuron recieves
 parameter NETWORKS_PER_POPULATION=16;	//number of networks in each population
+
+parameter TOTAL_GENES=OUTPUT_COUNT+(NEURON_COUNT*CONNECTIONS);
 
 input [63:0]timeToRun;
 
@@ -59,7 +61,6 @@ reg [22:0]DNACounter=0;
 reg [63:0]cycleCounter=0;
 
 reg enableNeurons=0;
-
 
 //-------------------------NETWORK CONSTRUCTION BEGIN------------------------------
 genvar a;
@@ -118,6 +119,8 @@ always @(posedge clk) begin
 			end else begin
 				enableNeurons<=1;		
 			end
+		end else begin
+			ramLatch<=0;
 		end
 	end else begin
 		DNACounter<=0;
@@ -128,10 +131,6 @@ always @(posedge clk) begin
 	end
 end
 //------------------------------DNA LOADER END-------------------------------------
-
-always @(negedge clk) begin
-	ramLatch<=0;
-end
 
 always @(posedge ramReady) begin
 	DNA[DNACounter]<=ramBusDataOut;

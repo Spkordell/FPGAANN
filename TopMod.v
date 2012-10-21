@@ -18,12 +18,16 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module TopMod(clk,MemDB,MemAdr,RamCE,MemOE,MemWE,RamAdv,RamClk,RamLB,RamUB,FlashCE);
+module TopMod(clk,nin,nout,MemDB,MemAdr,RamCE,MemOE,MemWE,RamAdv,RamClk,RamLB,RamUB,FlashCE);
 
 parameter READ=0;
 parameter WRITE=1;
 
 input clk;
+
+input [0:0]nin;
+output [0:0]nout;
+
 inout  [15:0]MemDB;
 output [23:1]MemAdr;
 output RamCE;
@@ -35,15 +39,20 @@ output RamLB;
 output RamUB;
 output FlashCE;
 
-reg ramInstruction;
-reg ramLatch;
+wire ramInstruction;
+wire ramLatch;
 wire [15:0]ramBusDataOut;
 reg [15:0]ramBusDataIn=0;
-reg [23:1]ramBusAddr=0;
+wire [23:1]ramBusAddr=0;
 wire ramReady;
 
-RAMControl RC(clk,ramInstruction,ramLatch,ramBusDataOut,ramBusDataIn,ramBusAddr,MemAdr,MemDB,RamCE,MemOE,MemWE,RamAdv,RamClk,RamLB,RamUB,FlashCE,ramReady);
+reg [63:0]timeToRun=25000000;
+reg networkState=1;
+wire [3:0]activeNetwork;
+wire networkFinished;
 
+
+RAMControl RC(clk,ramInstruction,ramLatch,ramBusDataOut,ramBusDataIn,ramBusAddr,MemAdr,MemDB,RamCE,MemOE,MemWE,RamAdv,RamClk,RamLB,RamUB,FlashCE,ramReady);
 Network NN(timeToRun,networkState,activeNetwork,networkFinished,nin,nout,clk,ramBusDataOut,ramBusAddr,ramLatch,ramReady,ramInstruction);
 
 /*

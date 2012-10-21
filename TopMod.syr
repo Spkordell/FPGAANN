@@ -1,0 +1,823 @@
+Release 13.4 - xst O.87xd (nt64)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.22 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.22 secs
+ 
+--> Reading design: TopMod.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+	9.1) Device utilization summary
+	9.2) Partition Resource Summary
+	9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "TopMod.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "TopMod"
+Output Format                      : NGC
+Target Device                      : xc3s500e-4-fg320
+
+---- Source Options
+Top Module Name                    : TopMod
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : Yes
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : Yes
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Multiplier Style                   : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 24
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling verilog file "Neuron.v" in library work
+Compiling verilog file "RAMControl.v" in library work
+Module <Neuron> compiled
+Compiling verilog file "Network.v" in library work
+Module <RAMControl> compiled
+Compiling verilog file "TopMod.v" in library work
+Module <Network> compiled
+Module <TopMod> compiled
+No errors in compilation
+Analysis of file <"TopMod.prj"> succeeded.
+ 
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for module <TopMod> in library <work> with parameters.
+	READ = "00000000000000000000000000000000"
+	WRITE = "00000000000000000000000000000001"
+
+Analyzing hierarchy for module <RAMControl> in library <work> with parameters.
+	READ = "00000000000000000000000000000000"
+	READWAIT0 = "00000000000000000000000000000011"
+	READWAIT1 = "00000000000000000000000000000100"
+	READWAIT2 = "00000000000000000000000000000101"
+	READWAIT3 = "00000000000000000000000000000110"
+	RESET = "00000000000000000000000000000010"
+	WRITE = "00000000000000000000000000000001"
+	WRITEWAIT0 = "00000000000000000000000000000111"
+	WRITEWAIT1 = "00000000000000000000000000001000"
+	WRITEWAIT2 = "00000000000000000000000000001001"
+	WRITEWAIT3 = "00000000000000000000000000001010"
+
+Analyzing hierarchy for module <Network> in library <work> with parameters.
+	CONNECTIONS = "00000000000000000000000000000010"
+	INPUT_COUNT = "00000000000000000000000000000001"
+	NETWORKS_PER_POPULATION = "00000000000000000000000000010000"
+	NEURON_COUNT = "00000000000000000000000000000010"
+	OUTPUT_COUNT = "00000000000000000000000000000001"
+	READ = "00000000000000000000000000000000"
+	TOTAL_GENES = "00000000000000000000000000000101"
+	WRITE = "00000000000000000000000000000001"
+
+Analyzing hierarchy for module <Neuron> in library <work> with parameters.
+	CONNECTIONS = "00000000000000000000000000000010"
+	THRESHHOLD = "00000000000000000000000000000001"
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing top module <TopMod>.
+	READ = 32'sb00000000000000000000000000000000
+	WRITE = 32'sb00000000000000000000000000000001
+Module <TopMod> is correct for synthesis.
+ 
+Analyzing module <RAMControl> in library <work>.
+	READ = 32'sb00000000000000000000000000000000
+	READWAIT0 = 32'sb00000000000000000000000000000011
+	READWAIT1 = 32'sb00000000000000000000000000000100
+	READWAIT2 = 32'sb00000000000000000000000000000101
+	READWAIT3 = 32'sb00000000000000000000000000000110
+	RESET = 32'sb00000000000000000000000000000010
+	WRITE = 32'sb00000000000000000000000000000001
+	WRITEWAIT0 = 32'sb00000000000000000000000000000111
+	WRITEWAIT1 = 32'sb00000000000000000000000000001000
+	WRITEWAIT2 = 32'sb00000000000000000000000000001001
+	WRITEWAIT3 = 32'sb00000000000000000000000000001010
+Module <RAMControl> is correct for synthesis.
+ 
+Analyzing module <Network> in library <work>.
+	CONNECTIONS = 32'sb00000000000000000000000000000010
+	INPUT_COUNT = 32'sb00000000000000000000000000000001
+	NETWORKS_PER_POPULATION = 32'sb00000000000000000000000000010000
+	NEURON_COUNT = 32'sb00000000000000000000000000000010
+	OUTPUT_COUNT = 32'sb00000000000000000000000000000001
+	READ = 32'sb00000000000000000000000000000000
+	TOTAL_GENES = 32'sb00000000000000000000000000000101
+	WRITE = 32'sb00000000000000000000000000000001
+INFO:Xst:1433 - Contents of array <DNA> may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
+Module <Network> is correct for synthesis.
+ 
+Analyzing module <Neuron> in library <work>.
+	CONNECTIONS = 32'sb00000000000000000000000000000010
+	THRESHHOLD = 32'sb00000000000000000000000000000001
+Module <Neuron> is correct for synthesis.
+ 
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+INFO:Xst:2679 - Register <ramInstruction> in unit <Network> has a constant value of 0 during circuit operation. The register is replaced by logic.
+
+Synthesizing Unit <RAMControl>.
+    Related source file is "RAMControl.v".
+WARNING:Xst:646 - Signal <MemDBIn> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Found 16-bit tristate buffer for signal <MemDB>.
+    Found 16-bit register for signal <ramBusDataOut>.
+    Found 1-bit register for signal <MemOE>.
+    Found 1-bit register for signal <MemWE>.
+    Found 23-bit register for signal <MemAdr>.
+    Found 1-bit register for signal <RamCE>.
+    Found 1-bit register for signal <Ready>.
+    Found 1-bit register for signal <MemDBOE>.
+    Found 16-bit register for signal <MemDBOut>.
+    Found 4-bit register for signal <ramState>.
+    Summary:
+	inferred  64 D-type flip-flop(s).
+	inferred  16 Tristate(s).
+Unit <RAMControl> synthesized.
+
+
+Synthesizing Unit <Neuron>.
+    Related source file is "Neuron.v".
+    Found 1-bit adder carry out for signal <out$addsub0001> created at line 27.
+    Found 2-bit comparator greatequal for signal <out$cmp_ge0000> created at line 27.
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+	inferred   1 Comparator(s).
+Unit <Neuron> synthesized.
+
+
+Synthesizing Unit <Network>.
+    Related source file is "Network.v".
+    Found 1-bit register for signal <networkFinished>.
+    Found 23-bit up counter for signal <ramBusAddr>.
+    Found 1-bit register for signal <ramLatch>.
+    Found 4-bit up counter for signal <activeNetwork>.
+    Found 64-bit up counter for signal <cycleCounter>.
+    Found 80-bit register for signal <DNA>.
+    Found 23-bit register for signal <DNACounter>.
+    Found 23-bit adder for signal <DNACounter$addsub0000> created at line 115.
+    Found 23-bit comparator greater for signal <DNACounter$cmp_gt0000> created at line 113.
+    Found 1-bit register for signal <enableNeurons>.
+    Found 23-bit comparator lessequal for signal <enableNeurons$cmp_le0000> created at line 113.
+    Found 4-bit comparator less for signal <enableNeurons$cmp_lt0000> created at line 99.
+    Found 64-bit comparator less for signal <enableNeurons$cmp_lt0001> created at line 98.
+    Found 64-bit comparator greatequal for signal <networkFinished$cmp_ge0000> created at line 98.
+    Found 4-bit comparator greatequal for signal <networkFinished$cmp_ge0001> created at line 99.
+    Summary:
+	inferred   3 Counter(s).
+	inferred 106 D-type flip-flop(s).
+	inferred   1 Adder/Subtractor(s).
+	inferred   6 Comparator(s).
+	inferred   5 Multiplexer(s).
+Unit <Network> synthesized.
+
+
+Synthesizing Unit <TopMod>.
+    Related source file is "TopMod.v".
+WARNING:Xst:653 - Signal <timeToRun> is used but never assigned. This sourceless signal will be automatically connected to value 0000000000000000000000000000000000000001011111010111100001000000.
+WARNING:Xst:653 - Signal <ramBusDataIn> is used but never assigned. This sourceless signal will be automatically connected to value 0000000000000000.
+WARNING:Xst:653 - Signal <networkState> is used but never assigned. This sourceless signal will be automatically connected to value 1.
+WARNING:Xst:646 - Signal <networkFinished> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <activeNetwork> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+Unit <TopMod> synthesized.
+
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 3
+ 1-bit adder carry out                                 : 2
+ 23-bit adder                                          : 1
+# Counters                                             : 3
+ 23-bit up counter                                     : 1
+ 4-bit up counter                                      : 1
+ 64-bit up counter                                     : 1
+# Registers                                            : 18
+ 1-bit register                                        : 8
+ 16-bit register                                       : 7
+ 23-bit register                                       : 2
+ 4-bit register                                        : 1
+# Comparators                                          : 8
+ 2-bit comparator greatequal                           : 2
+ 23-bit comparator greater                             : 1
+ 23-bit comparator lessequal                           : 1
+ 4-bit comparator greatequal                           : 1
+ 4-bit comparator less                                 : 1
+ 64-bit comparator greatequal                          : 1
+ 64-bit comparator less                                : 1
+# Multiplexers                                         : 5
+ 1-bit 3-to-1 multiplexer                              : 5
+# Tristates                                            : 1
+ 16-bit tristate buffer                                : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+INFO:Xst:2261 - The FF/Latch <MemAdr_1> in Unit <RC> is equivalent to the following 22 FFs/Latches, which will be removed : <MemAdr_2> <MemAdr_3> <MemAdr_4> <MemAdr_5> <MemAdr_6> <MemAdr_7> <MemAdr_8> <MemAdr_9> <MemAdr_10> <MemAdr_11> <MemAdr_12> <MemAdr_13> <MemAdr_14> <MemAdr_15> <MemAdr_16> <MemAdr_17> <MemAdr_18> <MemAdr_19> <MemAdr_20> <MemAdr_21> <MemAdr_22> <MemAdr_23> 
+WARNING:Xst:1293 - FF/Latch <MemDBOut_15> has a constant value of 0 in block <RC>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <MemDBOut_14> has a constant value of 0 in block <RC>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <MemDBOut_13> has a constant value of 0 in block <RC>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <MemDBOut_12> has a constant value of 0 in block <RC>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <MemDBOut_11> has a constant value of 0 in block <RC>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <MemDBOut_10> has a constant value of 0 in block <RC>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <MemDBOut_9> has a constant value of 0 in block <RC>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <MemDBOut_8> has a constant value of 0 in block <RC>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <MemDBOut_7> has a constant value of 0 in block <RC>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <MemDBOut_6> has a constant value of 0 in block <RC>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <MemDBOut_5> has a constant value of 0 in block <RC>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <MemDBOut_4> has a constant value of 0 in block <RC>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <MemDBOut_3> has a constant value of 0 in block <RC>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <MemDBOut_2> has a constant value of 0 in block <RC>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <MemDBOut_1> has a constant value of 0 in block <RC>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <MemDBOut_0> has a constant value of 0 in block <RC>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <MemAdr_1> (without init value) has a constant value of 0 in block <RC>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <ramBusDataOut_2> of sequential type is unconnected in block <RC>.
+WARNING:Xst:2677 - Node <ramBusDataOut_3> of sequential type is unconnected in block <RC>.
+WARNING:Xst:2677 - Node <ramBusDataOut_4> of sequential type is unconnected in block <RC>.
+WARNING:Xst:2677 - Node <ramBusDataOut_5> of sequential type is unconnected in block <RC>.
+WARNING:Xst:2677 - Node <ramBusDataOut_6> of sequential type is unconnected in block <RC>.
+WARNING:Xst:2677 - Node <ramBusDataOut_7> of sequential type is unconnected in block <RC>.
+WARNING:Xst:2677 - Node <ramBusDataOut_8> of sequential type is unconnected in block <RC>.
+WARNING:Xst:2677 - Node <ramBusDataOut_9> of sequential type is unconnected in block <RC>.
+WARNING:Xst:2677 - Node <ramBusDataOut_10> of sequential type is unconnected in block <RC>.
+WARNING:Xst:2677 - Node <ramBusDataOut_11> of sequential type is unconnected in block <RC>.
+WARNING:Xst:2677 - Node <ramBusDataOut_12> of sequential type is unconnected in block <RC>.
+WARNING:Xst:2677 - Node <ramBusDataOut_13> of sequential type is unconnected in block <RC>.
+WARNING:Xst:2677 - Node <ramBusDataOut_14> of sequential type is unconnected in block <RC>.
+WARNING:Xst:2677 - Node <ramBusDataOut_15> of sequential type is unconnected in block <RC>.
+WARNING:Xst:2677 - Node <DNA_4_2> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_4_3> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_4_4> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_4_5> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_4_6> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_4_7> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_4_8> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_4_9> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_4_10> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_4_11> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_4_12> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_4_13> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_4_14> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_4_15> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_1_2> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_1_3> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_1_4> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_1_5> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_1_6> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_1_7> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_1_8> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_1_9> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_1_10> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_1_11> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_1_12> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_1_13> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_1_14> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_1_15> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_3_2> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_3_3> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_3_4> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_3_5> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_3_6> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_3_7> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_3_8> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_3_9> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_3_10> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_3_11> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_3_12> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_3_13> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_3_14> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_3_15> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_2_2> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_2_3> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_2_4> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_2_5> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_2_6> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_2_7> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_2_8> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_2_9> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_2_10> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_2_11> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_2_12> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_2_13> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_2_14> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_2_15> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_0_2> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_0_3> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_0_4> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_0_5> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_0_6> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_0_7> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_0_8> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_0_9> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_0_10> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_0_11> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_0_12> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_0_13> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_0_14> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2677 - Node <DNA_0_15> of sequential type is unconnected in block <NN>.
+WARNING:Xst:2404 -  FFs/Latches <MemAdr<23:0>> (without init value) have a constant value of 0 in block <RAMControl>.
+WARNING:Xst:2677 - Node <DNA_4_2> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_4_3> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_4_4> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_4_5> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_4_6> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_4_7> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_4_8> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_4_9> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_4_10> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_4_11> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_4_12> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_4_13> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_4_14> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_4_15> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_1_2> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_1_3> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_1_4> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_1_5> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_1_6> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_1_7> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_1_8> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_1_9> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_1_10> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_1_11> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_1_12> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_1_13> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_1_14> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_1_15> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_3_2> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_3_3> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_3_4> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_3_5> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_3_6> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_3_7> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_3_8> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_3_9> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_3_10> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_3_11> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_3_12> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_3_13> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_3_14> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_3_15> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_2_2> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_2_3> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_2_4> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_2_5> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_2_6> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_2_7> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_2_8> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_2_9> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_2_10> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_2_11> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_2_12> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_2_13> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_2_14> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_2_15> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_0_2> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_0_3> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_0_4> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_0_5> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_0_6> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_0_7> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_0_8> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_0_9> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_0_10> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_0_11> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_0_12> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_0_13> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_0_14> of sequential type is unconnected in block <Network>.
+WARNING:Xst:2677 - Node <DNA_0_15> of sequential type is unconnected in block <Network>.
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 3
+ 1-bit adder carry out                                 : 2
+ 23-bit adder                                          : 1
+# Counters                                             : 3
+ 23-bit up counter                                     : 1
+ 4-bit up counter                                      : 1
+ 64-bit up counter                                     : 1
+# Registers                                            : 77
+ Flip-Flops                                            : 77
+# Comparators                                          : 8
+ 2-bit comparator greatequal                           : 2
+ 23-bit comparator greater                             : 1
+ 23-bit comparator lessequal                           : 1
+ 4-bit comparator greatequal                           : 1
+ 4-bit comparator less                                 : 1
+ 64-bit comparator greatequal                          : 1
+ 64-bit comparator less                                : 1
+# Multiplexers                                         : 5
+ 1-bit 3-to-1 multiplexer                              : 5
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+INFO:Xst:2261 - The FF/Latch <MemDBOut_0> in Unit <RAMControl> is equivalent to the following 15 FFs/Latches, which will be removed : <MemDBOut_1> <MemDBOut_2> <MemDBOut_3> <MemDBOut_4> <MemDBOut_5> <MemDBOut_6> <MemDBOut_7> <MemDBOut_8> <MemDBOut_9> <MemDBOut_10> <MemDBOut_11> <MemDBOut_12> <MemDBOut_13> <MemDBOut_14> <MemDBOut_15> 
+WARNING:Xst:1293 - FF/Latch <MemDBOut_0> has a constant value of 0 in block <RAMControl>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2170 - Unit Network : the following signal(s) form a combinatorial loop: neuronGenerate[2].U/Madd_out_addsub0001_lut<0>, Oconnection<2>, neuronGenerate[2].U/out_cmp_ge0000, nout, Iconnection<3>.
+
+Optimizing unit <TopMod> ...
+
+Optimizing unit <Network> ...
+WARNING:Xst:2677 - Node <RC/ramBusDataOut_15> of sequential type is unconnected in block <TopMod>.
+WARNING:Xst:2677 - Node <RC/ramBusDataOut_14> of sequential type is unconnected in block <TopMod>.
+WARNING:Xst:2677 - Node <RC/ramBusDataOut_13> of sequential type is unconnected in block <TopMod>.
+WARNING:Xst:2677 - Node <RC/ramBusDataOut_12> of sequential type is unconnected in block <TopMod>.
+WARNING:Xst:2677 - Node <RC/ramBusDataOut_11> of sequential type is unconnected in block <TopMod>.
+WARNING:Xst:2677 - Node <RC/ramBusDataOut_10> of sequential type is unconnected in block <TopMod>.
+WARNING:Xst:2677 - Node <RC/ramBusDataOut_9> of sequential type is unconnected in block <TopMod>.
+WARNING:Xst:2677 - Node <RC/ramBusDataOut_8> of sequential type is unconnected in block <TopMod>.
+WARNING:Xst:2677 - Node <RC/ramBusDataOut_7> of sequential type is unconnected in block <TopMod>.
+WARNING:Xst:2677 - Node <RC/ramBusDataOut_6> of sequential type is unconnected in block <TopMod>.
+WARNING:Xst:2677 - Node <RC/ramBusDataOut_5> of sequential type is unconnected in block <TopMod>.
+WARNING:Xst:2677 - Node <RC/ramBusDataOut_4> of sequential type is unconnected in block <TopMod>.
+WARNING:Xst:2677 - Node <RC/ramBusDataOut_3> of sequential type is unconnected in block <TopMod>.
+WARNING:Xst:2677 - Node <RC/ramBusDataOut_2> of sequential type is unconnected in block <TopMod>.
+WARNING:Xst:2677 - Node <NN/ramBusAddr_23> of sequential type is unconnected in block <TopMod>.
+WARNING:Xst:2677 - Node <NN/ramBusAddr_22> of sequential type is unconnected in block <TopMod>.
+WARNING:Xst:2677 - Node <NN/ramBusAddr_21> of sequential type is unconnected in block <TopMod>.
+WARNING:Xst:2677 - Node <NN/ramBusAddr_20> of sequential type is unconnected in block <TopMod>.
+WARNING:Xst:2677 - Node <NN/ramBusAddr_19> of sequential type is unconnected in block <TopMod>.
+WARNING:Xst:2677 - Node <NN/ramBusAddr_18> of sequential type is unconnected in block <TopMod>.
+WARNING:Xst:2677 - Node <NN/ramBusAddr_17> of sequential type is unconnected in block <TopMod>.
+WARNING:Xst:2677 - Node <NN/ramBusAddr_16> of sequential type is unconnected in block <TopMod>.
+WARNING:Xst:2677 - Node <NN/ramBusAddr_15> of sequential type is unconnected in block <TopMod>.
+WARNING:Xst:2677 - Node <NN/ramBusAddr_14> of sequential type is unconnected in block <TopMod>.
+WARNING:Xst:2677 - Node <NN/ramBusAddr_13> of sequential type is unconnected in block <TopMod>.
+WARNING:Xst:2677 - Node <NN/ramBusAddr_12> of sequential type is unconnected in block <TopMod>.
+WARNING:Xst:2677 - Node <NN/ramBusAddr_11> of sequential type is unconnected in block <TopMod>.
+WARNING:Xst:2677 - Node <NN/ramBusAddr_10> of sequential type is unconnected in block <TopMod>.
+WARNING:Xst:2677 - Node <NN/ramBusAddr_9> of sequential type is unconnected in block <TopMod>.
+WARNING:Xst:2677 - Node <NN/ramBusAddr_8> of sequential type is unconnected in block <TopMod>.
+WARNING:Xst:2677 - Node <NN/ramBusAddr_7> of sequential type is unconnected in block <TopMod>.
+WARNING:Xst:2677 - Node <NN/ramBusAddr_6> of sequential type is unconnected in block <TopMod>.
+WARNING:Xst:2677 - Node <NN/ramBusAddr_5> of sequential type is unconnected in block <TopMod>.
+WARNING:Xst:2677 - Node <NN/ramBusAddr_4> of sequential type is unconnected in block <TopMod>.
+WARNING:Xst:2677 - Node <NN/ramBusAddr_3> of sequential type is unconnected in block <TopMod>.
+WARNING:Xst:2677 - Node <NN/ramBusAddr_2> of sequential type is unconnected in block <TopMod>.
+WARNING:Xst:2677 - Node <NN/ramBusAddr_1> of sequential type is unconnected in block <TopMod>.
+WARNING:Xst:2677 - Node <NN/networkFinished> of sequential type is unconnected in block <TopMod>.
+
+Mapping all equations...
+WARNING:Xst:2170 - Unit TopMod : the following signal(s) form a combinatorial loop: nout<0>, N15, NN/Oconnection<1>, NN/neuronGenerate[0].U/out1, NN/neuronGenerate[0].U/out20.
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block TopMod, actual ratio is 2.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 114
+ Flip-Flops                                            : 114
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : TopMod.ngr
+Top Level Output File Name         : TopMod
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : No
+
+Design Statistics
+# IOs                              : 50
+
+Cell Usage :
+# BELS                             : 386
+#      GND                         : 1
+#      INV                         : 8
+#      LUT1                        : 90
+#      LUT2                        : 7
+#      LUT3                        : 37
+#      LUT4                        : 38
+#      LUT4_D                      : 1
+#      MUXCY                       : 112
+#      MUXF5                       : 4
+#      VCC                         : 1
+#      XORCY                       : 87
+# FlipFlops/Latches                : 114
+#      FD                          : 8
+#      FDE                         : 14
+#      FDRE                        : 91
+#      FDS                         : 1
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 49
+#      IBUF                        : 1
+#      IOBUF                       : 2
+#      OBUF                        : 32
+#      OBUFT                       : 14
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3s500efg320-4 
+
+ Number of Slices:                      103  out of   4656     2%  
+ Number of Slice Flip Flops:            112  out of   9312     1%  
+ Number of 4 input LUTs:                181  out of   9312     1%  
+ Number of IOs:                          50
+ Number of bonded IOBs:                  50  out of    232    21%  
+    IOB Flip Flops:                       2
+ Number of GCLKs:                         1  out of     24     4%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clk                                | BUFGP                  | 104   |
+RC/Ready                           | NONE(NN/DNA_0_1)       | 10    |
+-----------------------------------+------------------------+-------+
+INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -4
+
+   Minimum period: 7.560ns (Maximum Frequency: 132.270MHz)
+   Minimum input arrival time before clock: 1.946ns
+   Maximum output required time after clock: 11.513ns
+   Maximum combinational path delay: 12.417ns
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 7.560ns (frequency: 132.270MHz)
+  Total number of paths / destination ports: 13234 / 266
+-------------------------------------------------------------------------
+Delay:               7.560ns (Levels of Logic = 22)
+  Source:            NN/cycleCounter_6 (FF)
+  Destination:       NN/cycleCounter_63 (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
+
+  Data Path: NN/cycleCounter_6 to NN/cycleCounter_63
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRE:C->Q             2   0.591   0.622  NN/cycleCounter_6 (NN/cycleCounter_6)
+     LUT1:I0->O            1   0.704   0.000  NN/Mcompar_networkFinished_cmp_ge0000_cy<0>_rt (NN/Mcompar_networkFinished_cmp_ge0000_cy<0>_rt)
+     MUXCY:S->O            1   0.464   0.000  NN/Mcompar_networkFinished_cmp_ge0000_cy<0> (NN/Mcompar_networkFinished_cmp_ge0000_cy<0>)
+     MUXCY:CI->O           1   0.059   0.000  NN/Mcompar_networkFinished_cmp_ge0000_cy<1> (NN/Mcompar_networkFinished_cmp_ge0000_cy<1>)
+     MUXCY:CI->O           1   0.059   0.000  NN/Mcompar_networkFinished_cmp_ge0000_cy<2> (NN/Mcompar_networkFinished_cmp_ge0000_cy<2>)
+     MUXCY:CI->O           1   0.059   0.000  NN/Mcompar_networkFinished_cmp_ge0000_cy<3> (NN/Mcompar_networkFinished_cmp_ge0000_cy<3>)
+     MUXCY:CI->O           1   0.059   0.000  NN/Mcompar_networkFinished_cmp_ge0000_cy<4> (NN/Mcompar_networkFinished_cmp_ge0000_cy<4>)
+     MUXCY:CI->O           1   0.059   0.000  NN/Mcompar_networkFinished_cmp_ge0000_cy<5> (NN/Mcompar_networkFinished_cmp_ge0000_cy<5>)
+     MUXCY:CI->O           1   0.059   0.000  NN/Mcompar_networkFinished_cmp_ge0000_cy<6> (NN/Mcompar_networkFinished_cmp_ge0000_cy<6>)
+     MUXCY:CI->O           1   0.059   0.000  NN/Mcompar_networkFinished_cmp_ge0000_cy<7> (NN/Mcompar_networkFinished_cmp_ge0000_cy<7>)
+     MUXCY:CI->O           1   0.059   0.000  NN/Mcompar_networkFinished_cmp_ge0000_cy<8> (NN/Mcompar_networkFinished_cmp_ge0000_cy<8>)
+     MUXCY:CI->O           1   0.059   0.000  NN/Mcompar_networkFinished_cmp_ge0000_cy<9> (NN/Mcompar_networkFinished_cmp_ge0000_cy<9>)
+     MUXCY:CI->O           1   0.059   0.000  NN/Mcompar_networkFinished_cmp_ge0000_cy<10> (NN/Mcompar_networkFinished_cmp_ge0000_cy<10>)
+     MUXCY:CI->O           1   0.059   0.000  NN/Mcompar_networkFinished_cmp_ge0000_cy<11> (NN/Mcompar_networkFinished_cmp_ge0000_cy<11>)
+     MUXCY:CI->O           1   0.059   0.000  NN/Mcompar_networkFinished_cmp_ge0000_cy<12> (NN/Mcompar_networkFinished_cmp_ge0000_cy<12>)
+     MUXCY:CI->O           1   0.059   0.000  NN/Mcompar_networkFinished_cmp_ge0000_cy<13> (NN/Mcompar_networkFinished_cmp_ge0000_cy<13>)
+     MUXCY:CI->O           1   0.059   0.000  NN/Mcompar_networkFinished_cmp_ge0000_cy<14> (NN/Mcompar_networkFinished_cmp_ge0000_cy<14>)
+     MUXCY:CI->O           1   0.059   0.000  NN/Mcompar_networkFinished_cmp_ge0000_cy<15> (NN/Mcompar_networkFinished_cmp_ge0000_cy<15>)
+     MUXCY:CI->O           1   0.059   0.000  NN/Mcompar_networkFinished_cmp_ge0000_cy<16> (NN/Mcompar_networkFinished_cmp_ge0000_cy<16>)
+     MUXCY:CI->O           1   0.059   0.000  NN/Mcompar_networkFinished_cmp_ge0000_cy<17> (NN/Mcompar_networkFinished_cmp_ge0000_cy<17>)
+     MUXCY:CI->O           1   0.059   0.000  NN/Mcompar_networkFinished_cmp_ge0000_cy<18> (NN/Mcompar_networkFinished_cmp_ge0000_cy<18>)
+     MUXCY:CI->O           9   0.331   0.899  NN/Mcompar_networkFinished_cmp_ge0000_cy<19> (NN/networkFinished_cmp_ge0000)
+     LUT2:I1->O           64   0.704   1.272  NN/cycleCounter_and00001 (NN/cycleCounter_and0000)
+     FDRE:R                    0.911          NN/cycleCounter_0
+    ----------------------------------------
+    Total                      7.560ns (4.767ns logic, 2.793ns route)
+                                       (63.1% logic, 36.9% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
+  Total number of paths / destination ports: 2 / 2
+-------------------------------------------------------------------------
+Offset:              1.946ns (Levels of Logic = 1)
+  Source:            MemDB<1> (PAD)
+  Destination:       RC/ramBusDataOut_1 (FF)
+  Destination Clock: clk rising
+
+  Data Path: MemDB<1> to RC/ramBusDataOut_1
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IOBUF:IO->O           1   1.218   0.420  MemDB_1_IOBUF (N21)
+     FDE:D                     0.308          RC/ramBusDataOut_1
+    ----------------------------------------
+    Total                      1.946ns (1.526ns logic, 0.420ns route)
+                                       (78.4% logic, 21.6% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
+  Total number of paths / destination ports: 26 / 20
+-------------------------------------------------------------------------
+Offset:              9.862ns (Levels of Logic = 6)
+  Source:            NN/enableNeurons (FF)
+  Destination:       nout<0> (PAD)
+  Source Clock:      clk rising
+
+  Data Path: NN/enableNeurons to nout<0>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q              2   0.591   0.451  NN/enableNeurons (NN/enableNeurons)
+     LUT4:I3->O            5   0.704   0.633  NN/neuronGenerate[2].U/out43 (NN/Oconnection<2>)
+     MUXF5:S->O            1   0.739   0.499  NN/neuronGenerate[0].U/out20_f5 (NN/neuronGenerate[0].U/out20)
+     LUT3:I1->O            9   0.704   0.824  NN/neuronGenerate[0].U/out42 (NN/Oconnection<1>)
+     LUT4:I3->O            1   0.704   0.000  NN/Mmux__COND_521 (NN/Mmux__COND_52)
+     MUXF5:I1->O           1   0.321   0.420  NN/Mmux__COND_52_f5 (nout_0_OBUF)
+     OBUF:I->O                 3.272          nout_0_OBUF (nout<0>)
+    ----------------------------------------
+    Total                      9.862ns (7.035ns logic, 2.827ns route)
+                                       (71.3% logic, 28.7% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'RC/Ready'
+  Total number of paths / destination ports: 55 / 1
+-------------------------------------------------------------------------
+Offset:              11.513ns (Levels of Logic = 8)
+  Source:            NN/DNA_3_0 (FF)
+  Destination:       nout<0> (PAD)
+  Source Clock:      RC/Ready rising
+
+  Data Path: NN/DNA_3_0 to nout<0>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q              2   0.591   0.622  NN/DNA_3_0 (NN/DNA_3_0)
+     LUT4:I0->O            1   0.704   0.000  NN/Mmux__COND_421 (NN/Mmux__COND_42)
+     MUXF5:I1->O           1   0.321   0.455  NN/Mmux__COND_42_f5 (NN/Iconnection<3>)
+     LUT4:I2->O            5   0.704   0.633  NN/neuronGenerate[2].U/out43 (NN/Oconnection<2>)
+     MUXF5:S->O            1   0.739   0.499  NN/neuronGenerate[0].U/out20_f5 (NN/neuronGenerate[0].U/out20)
+     LUT3:I1->O            9   0.704   0.824  NN/neuronGenerate[0].U/out42 (NN/Oconnection<1>)
+     LUT4:I3->O            1   0.704   0.000  NN/Mmux__COND_521 (NN/Mmux__COND_52)
+     MUXF5:I1->O           1   0.321   0.420  NN/Mmux__COND_52_f5 (nout_0_OBUF)
+     OBUF:I->O                 3.272          nout_0_OBUF (nout<0>)
+    ----------------------------------------
+    Total                     11.513ns (8.060ns logic, 3.453ns route)
+                                       (70.0% logic, 30.0% route)
+
+=========================================================================
+Timing constraint: Default path analysis
+  Total number of paths / destination ports: 25 / 1
+-------------------------------------------------------------------------
+Delay:               12.417ns (Levels of Logic = 9)
+  Source:            nin<0> (PAD)
+  Destination:       nout<0> (PAD)
+
+  Data Path: nin<0> to nout<0>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             9   1.218   0.899  nin_0_IBUF (nin_0_IBUF)
+     LUT4:I1->O            1   0.704   0.000  NN/Mmux__COND_421 (NN/Mmux__COND_42)
+     MUXF5:I1->O           1   0.321   0.455  NN/Mmux__COND_42_f5 (NN/Iconnection<3>)
+     LUT4:I2->O            5   0.704   0.633  NN/neuronGenerate[2].U/out43 (NN/Oconnection<2>)
+     MUXF5:S->O            1   0.739   0.499  NN/neuronGenerate[0].U/out20_f5 (NN/neuronGenerate[0].U/out20)
+     LUT3:I1->O            9   0.704   0.824  NN/neuronGenerate[0].U/out42 (NN/Oconnection<1>)
+     LUT4:I3->O            1   0.704   0.000  NN/Mmux__COND_521 (NN/Mmux__COND_52)
+     MUXF5:I1->O           1   0.321   0.420  NN/Mmux__COND_52_f5 (nout_0_OBUF)
+     OBUF:I->O                 3.272          nout_0_OBUF (nout<0>)
+    ----------------------------------------
+    Total                     12.417ns (8.687ns logic, 3.730ns route)
+                                       (70.0% logic, 30.0% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 13.00 secs
+Total CPU time to Xst completion: 13.69 secs
+ 
+--> 
+
+Total memory usage is 273384 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :  220 (   0 filtered)
+Number of infos    :    5 (   0 filtered)
+

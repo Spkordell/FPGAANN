@@ -2,11 +2,11 @@
 NET "clk"   LOC = "B8";
 
 #network inputs
-//NET "nin" LOC = "R17";
-#NET "nin<1>" LOC = "N17";
+//NET "nin" LOC = "N17";
+NET "nin<0>" LOC = "G18";
 
 #network outputs
-#NET "nout<0>" LOC = "R4"; //previously C17
+NET "nout<0>" LOC = "R4"; //previously C17
 
 //NET "LED" LOC = "R4";
 
