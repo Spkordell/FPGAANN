@@ -18,7 +18,7 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module TopMod(clk,nin,nout,MemDB,MemAdr,RamCE,MemOE,MemWE,RamAdv,RamClk,RamLB,RamUB,FlashCE);
+module TopMod(clk,nin,nout,an,seg,MemDB,MemAdr,RamCE,MemOE,MemWE,RamAdv,RamClk,RamLB,RamUB,FlashCE);
 
 parameter READ=0;
 parameter WRITE=1;
@@ -27,6 +27,9 @@ input clk;
 
 input [0:0]nin;
 output [0:0]nout;
+
+output [3:0]an;
+output [6:0]seg;
 
 inout  [15:0]MemDB;
 output [23:1]MemAdr;
@@ -66,13 +69,16 @@ wire [7:0]generationCounter;
 //Misc. Connection Lines
 wire [7:0]randomnum;
 
+assign nout=nin;
+
+bcddisplay4 DISP(clk,activeNetwork,an,seg);
 
 RAMControl RC(clk,ramInstruction,ramLatch,ramBusDataOut,ramBusDataIn,ramBusAddr,MemAdr,MemDB,RamCE,MemOE,MemWE,RamAdv,RamClk,RamLB,RamUB,FlashCE,ramReady);
-Network NN(timeToRun,networkState,activeNetwork,networkFinished,nin,nout,clk,ramBusDataOut,ramBusAddr,ramLatch,ramReady,ramInstruction);
+//Network NN(timeToRun,networkState,activeNetwork,networkFinished,nin,nout,clk,ramBusDataOut,ramBusAddr,ramLatch,ramReady,ramInstruction);
 NetworkControl NC(clk,networkState,initializeFinished,sortFinished,crossFinished,networkFinished,generationCounter);
 DNAInitializer INIT(randomizeEnabled,networkState,initializeFinished,randomnum,clk,ramBusDataIn,ramBusAddr,ramLatch,ramReady,ramInstruction);
-BubbleSort BS(networkState,sortFinished,fitness,activeNetwork,clk,ramBusDataOut,ramBusDataIn,ramBusAddr,ramLatch,ramReady,ramInstruction);
-DNACrosser CROSS(networkState,crossFinished,randomnum,clk,ramBusDataOut,ramBusDataIn,ramBusAddr,ramLatch,ramReady,ramInstruction);
+//BubbleSort BS(networkState,sortFinished,fitness,activeNetwork,clk,ramBusDataOut,ramBusDataIn,ramBusAddr,ramLatch,ramReady,ramInstruction);
+//DNACrosser CROSS(networkState,crossFinished,randomnum,clk,ramBusDataOut,ramBusDataIn,ramBusAddr,ramLatch,ramReady,ramInstruction);
 PNGenerator RAND(clk, 0, randomnum);
 
 
@@ -90,6 +96,6 @@ end
 always @(negedge clk) begin
 	ramLatch<=0;
 end
-*/
 
+*/
 endmodule

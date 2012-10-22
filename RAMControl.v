@@ -76,13 +76,13 @@ always @(posedge clk) begin
 			MemOE<=1;
 			MemWE<=1;
 			MemDBOE<=0;
-			//MemAdr<=ramBusAddr;
 			if (latch) begin
 				Ready<=0;
 				if (Instruction==READ) begin
 					ramState<=READ;
 				end else begin
-					ramState<=WRITE;		
+					ramState<=WRITE;	
+					MemDBOE<=1;					
 					MemDBOut<=ramBusDataIn;
 				end
 			end
@@ -95,7 +95,7 @@ always @(posedge clk) begin
 			ramState<=READWAIT0;
 		end
 		WRITE: begin
-			MemDBOE<=1;
+			//MemDBOE<=1;
 			RamCE<=0;
 			MemWE<=0;
 			ramState<=WRITEWAIT0;
